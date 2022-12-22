@@ -1,0 +1,175 @@
+body {
+    background: white;
+}
+
+.navbar {
+    background-color: #800000;
+    color: white;
+    position: sticky;
+}
+
+.page-container {
+    margin-top: 75px;
+}
+
+/*Plan Page*/
+#planPage{
+    width:100%;
+    height:auto;
+    margin: 50px;
+    margin-top: 25px;
+    padding:1%;
+}
+
+/*Plan details*/
+#fabPlan{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+    background: #800000;
+    color: white;
+    z-index: 999;               
+}
+
+#modalHeader{
+    padding-bottom: 5px; 
+}
+.modal-subheader{
+    padding: 5px 0px 15px;
+}
+#modalBody{
+    padding-top: 2px;
+}
+.form-group{
+    padding-bottom: 15px;
+}
+
+
+.pin img {
+   float:left; 
+   height:100px;
+   width:100px; 
+   object-fit: cover;
+} 
+
+
+.pin {
+    display: inline-block;
+    /* box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4); */
+    margin: 1px 2px 1px;
+    padding: 10px;
+    /* background: linear-gradient(45deg, #FFF, #EEE); */
+    transition: all .2s ease;
+    width: 100%;
+    position: relative;
+}
+
+
+/* .pin p {
+    font: 12px/18px Arial, sans-serif;
+    text-align: center;
+    color: #333;
+    margin: 0;
+    max-height: 18px;
+    overflow: hidden;
+} */
+
+.start-date,.budget, .title, .travel-type{
+    font-weight: bold;
+}
+
+#deletePlanOrRoute {
+    position: absolute;
+    top:  10px;
+    right: 10px;
+    z-index: 999;
+    box-shadow: none;
+}
+
+#deletePlanOrRoute > .material-icons{
+    color: #800000;
+}
+
+.bmd-btn-fab:active {                       
+    transform: translateY(2px);
+    opacity: 0.8;
+}
+
+.jan,.feb,.mar,.apr,.may,.jun,.jul,.aug,.sep,.oct,.nov,.dec{
+    margin: 10px 10px;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+
+/*New Nav Bar*/
+.navbar{
+    background-color: #800000;
+}
+.nav-item{
+    margin-right: 1.25rem;
+    --bs-nav-link-hover-color: #6c757d;
+}
+.nav-item > a {     
+    padding: 1rem 0.25rem;
+    color: white;
+}
+.nav-item > a > i {
+    margin-right: 0.5rem;       /*space inbetween icon and text for tab*/
+    vertical-align: middle;
+}
+.nav-item > a > span {
+    vertical-align: middle;
+}
+#navTitle{
+    font-weight:500;
+    font-size: 1.5em;
+    margin-right: 2.5rem;
+    color: white;
+}
+.dropdown-toggle::after{
+    vertical-align: middle;
+}
+
+
+
+#advise{
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+#roseLogo { /* image is inline*/
+    max-width: 350px;
+    margin: 20px auto;
+    display: block;
+}
+
+#rosefireButton{
+    display: block;
+    margin: 60px auto;
+    color: white;
+    background: #800000;
+    font-size: 1.1em;
+    padding: 10px 30px;
+    border-radius: 5px;
+}
+
+.dropdown-menu-right {
+    left: -128px;
+}
+
+/* #startRoute, #endRoute{
+    display: none;
+} */
+
+.nav-link{
+    cursor: pointer;
+}

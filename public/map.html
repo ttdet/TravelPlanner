@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+  <!-- <link rel="stylesheet" href="styles/bootstrap-material-design.min.css"> -->
+  <link rel="stylesheet" href="styles/mapPage.css">
+  <link href="styles/bootstrap.min.css" rel="stylesheet">
+  <link href="styles/bootstrap-popover-x.css" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Travel Planner</title>
+</head>
+
+<body>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+      <a id="navTitle" class="navbar-brand" href="/map.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>Where do you want
+          to go?</a>
+      <div id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a id="myMapButt" class="nav-link"> <i class="material-icons">travel_explore</i><span>My Map</span></a>
+          </li>
+          <li class="nav-item">
+            <a id="myPlansButt" class="nav-link"> <i class="material-icons">location_city</i><span>My Trips</span></a>
+          </li>
+          <li class="nav-item">
+            <a id="signOutMenuButt" class="nav-link"> <i class="material-icons">logout</i><span>Sign Out</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="modal fade" id="cityDetailModal" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title city-detail-title"></h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div id="cityDetailCarousel" class="city-detail-carousel carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+
+            </div>
+            <a class="carousel-control-prev" role="button" data-slide="prev"
+              onclick="$('#cityDetailCarousel').carousel('prev')">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" type="button" data-slide="next"
+              onclick="$('#cityDetailCarousel').carousel('next')">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+
+          <div class="city-detail-intro">
+
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button id="buildPlanFromModalBtn" type="button" class="btn btn-primary" data-bs-dismiss="modal">Add a
+            Plan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addDestModal" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title add-dest-title"></h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group bmd-form-group name-field">
+            <label for="cityPlanName" class="bmd-label-floating">Name</label>
+            <input type="text" class="form-control name-input" id="cityPlanName">
+          </div>
+          <div class="form-group bmd-form-group start-date-field">
+            <label for="cityPlanStartDate" class="bmd-label-floating">Start Date</label>
+            <input type="text" class="form-control start-date-input" id="cityPlanStartDate">
+          </div>
+          <div class="form-group bmd-form-group end-date-field">
+            <label for="cityPlanEndDate" class="bmd-label-floating">End Date</label>
+            <input type="text" class="form-control end-date-input" id="cityPlanEndDate">
+          </div>
+          <div class="form-group bmd-form-group budget-field">
+            <label for="cityPlanBudget" class="bmd-label-floating">Budget</label>
+            <input type="number" min="0" class="form-control budget-input" id="cityPlanBudget" step="100">
+          </div>
+          <div class="form-group bmd-form-group">
+            <label for="cityPlanDescription" class="bmd-label-floating">Description</label>
+            <textarea class="form-control" id="cityPlanDescription"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="submitAddPlan">Add City
+            Plan</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="addRouteModal" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title add-route-title"></h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group bmd-form-group name-field">
+            <label for="routeName" class="bmd-label-floating">Name</label>
+            <input type="text" class="form-control name-input" id="routeName">
+          </div>
+          <div class="form-group bmd-form-group start-date-field">
+            <label for="routeStartDate" class="bmd-label-floating">Start Date</label>
+            <input type="text" class="form-control start-date-input" id="routeStartDate">
+          </div>
+          <div class="form-group bmd-form-group end-date-field">
+            <label for="routeEndDate" class="bmd-label-floating">End Date</label>
+            <input type="text" class="form-control end-date-input" id="routeEndDate">
+          </div>
+          <div class="form-group bmd-form-group budget-field">
+            <label for="routeBudget" class="bmd-label-floating">Budget</label>
+            <input type="number" class="form-control budget-input" id="routeBudget" min="0" step="100">
+          </div>
+          <div class="form-group bmd-form-group">
+            <label for="routeDescription" class="bmd-label-floating">Description</label>
+            <textarea class="form-control" id="routeDescription"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="submitAddRoute">Add Route</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="smallScreenMsg">Please maximize your screen if you experience display issues
+  </div>
+  <div id="mainPage" class="container page-container justify-content-center">
+    <div class="row justify-content-center">
+      <div class="col-11 col-md-10 col-lg-8 no-gutters">
+        <img src="imgs/map4x.png" id="mapLevel" alt="us map" style="width: 100%">
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="new york pin" id="newYorkPin" data-pin-city-id="100"
+          data-pin-city-name="New York" data-toggle="popover" title="New York">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="miami pin" id="miamiPin" data-pin-city-id="101"
+          data-pin-city-name="Miami" data-toggle="popover" title="Miami">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="los angeles pin" id="laPin" data-pin-city-id="102"
+          data-pin-city-name="Los Angeles" data-toggle="popover" title="Los Angeles">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="chicago pin" id="chicagoPin" data-pin-city-id="103"
+          data-pin-city-name="Chicago" data-toggle="popover" title="Chicago">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="houston pin" id="houstonPin" data-pin-city-id="104"
+          data-pin-city-name="Houston" data-toggle="popover" title="Houston">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="seattle pin" id="seattlePin" data-pin-city-id="105"
+          data-pin-city-name="Seattle" data-toggle="popover" title="Seattle">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="boston pin" id="bostonPin" data-pin-city-id="106"
+          data-pin-city-name="Boston" data-toggle="popover" title="Boston">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="dc pin" id="dcPin" data-pin-city-id="107"
+          data-pin-city-name="Washington, D.C." data-toggle="popover" title="Washington, D.C.">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="san francisco pin" id="sfPin" data-pin-city-id="108"
+          data-pin-city-name="San Francisco" data-toggle="popover" title="San Francisco">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="philadelphia pin" id="phillyPin" data-pin-city-id="109"
+          data-pin-city-name="Philadelphia" data-toggle="popover" title="Philadelphia">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="phoenix pin" id="phoenixPin" data-pin-city-id="110"
+          data-pin-city-name="Phoenix" data-toggle="popover" title="Phoenix">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="las vegas pin" id="lasVegasPin" data-pin-city-id="111"
+          data-pin-city-name="Las Vegas" data-toggle="popover" title="Las Vegas">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="salt lake city pin" id="saltLakeCityPin"
+          data-pin-city-id="112" data-pin-city-name="Salt Lake City" data-toggle="popover" title="Salt Lake City">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="dalls pin" id="dallasPin" data-pin-city-id="113"
+          data-pin-city-name="Dallas" data-toggle="popover" title="Dallas">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="atlanta pin" id="atlantaPin" data-pin-city-id="114"
+          data-pin-city-name="Atlanta" data-toggle="popover" title="Atlanta">
+        <br>
+        <img src="imgs/blackpin_9_14.jpg" class="pinpoint" alt="denver pin" id="denverPin" data-pin-city-id="115"
+          data-pin-city-name="Denver" data-toggle="popover" title="Denver">
+      </div>
+
+      <div id="btnWrapper" class="col-2">
+        <div class="row"><button id="toggleRouteDisplay" class="btn btn-secondary map-page-func-btn">Toggle Route Display</button></div>
+        <div class="row"><button id="closeAllPopover" class="btn btn-secondary map-page-func-btn">Close All Popovers</button></div>
+        <div class="row"><button id="clrRouteSelBtn" class="btn btn-secondary map-page-func-btn" style="display: none">Clear Start Point Selection</button></div>
+      </div>
+
+    </div>
+    <div class="row">
+     
+
+    </div>
+
+
+
+
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <!-- <script src="scripts/popper.js"></script> -->
+
+    <!-- <script src="scripts/bootstrap-material-design.js"></script> -->
+    <!-- <script>$("body").bootstrapMaterialDesign();</script> -->
+    <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/bootstrap-popover-x.js"></script>
+    <script src="scripts/leader-line.min.js"></script>
+
+
+</body>
+
+</html>

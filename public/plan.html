@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons">
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="styles/bootstrap.min.css" rel="stylesheet">
+    <link href="styles/bootstrap-popover-x.css" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Travel Planner</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a id="navTitle" class="navbar-brand" href="/map.html">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>My Plan and Routes</a>
+          <div id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a id="myMapButt" class="nav-link"> <i class="material-icons">travel_explore</i><span>My Map</span></a>
+                </li>
+                <li class="nav-item">
+                    <a id="myPlansButt" class="nav-link"> <i class="material-icons">location_city</i><span>My Trips</span></a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="material-icons">filter_alt</i><span>Filter Trips</span></a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a id="AtlantaButt" class="dropdown-item">Atlanta Trips</a></li>
+                        <li><a id="BostonButt" class="dropdown-item">Boston Trips</a></li>
+                        <li><a id="ChicButt" class="dropdown-item">Chicago Trips</a></li>
+                        <li><a id="DallasButt" class="dropdown-item">Dallas Trips</a></li>
+                        <li><a id="DenverButt" class="dropdown-item">Denver Trips</a></li>
+                        <li><a id="HoustonButt" class="dropdown-item">Houston Trips</a></li>
+                        <li><a id="LVButt" class="dropdown-item">Las Vegas Trips</a></li>
+                        <li><a id="LAButt" class="dropdown-item">Los Angeles Trips</a></li>
+                        <li><a id="MiamiButt" class="dropdown-item">Miami Trips</a></li>
+                        <li><a id="NYButt" class="dropdown-item">New York Trips</a></li>
+                        <li><a id="PhillyButt" class="dropdown-item">Philadelphia Trips</a></li>
+                        <li><a id="PhoenixButt" class="dropdown-item">Phoenix Trips</a></li>
+                        <li><a id="SLCButt" class="dropdown-item">Salt Lake City Trips</a></li>
+                        <li><a id="SFButt" class="dropdown-item">San Francisco Trips</a></li>
+                        <li><a id="SeattleButt" class="dropdown-item">Seattle Trips</a></li>
+                        <li><a id="DCButt" class="dropdown-item">Washington DC Trips</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a id="signOutMenuButt" class="nav-link"> <i class="material-icons">logout</i><span>Sign Out</span></a>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+    <!--Pin/card Content-->
+    <main class="bmd-layout-content">
+        <div id="planPage" class="container page-container">
+            <div id="messContainer">
+                <div id="mess"></div>
+            </div>
+            <div id="janContainer">
+                <div class="jan"></div>
+                <div id="janList"></div>
+            </div>
+            <div id="febContainer">
+                <div class="feb"></div>
+                <div id="febList"></div>
+            </div>
+            <div id="marContainer">
+                <div class="mar"></div>
+                <div id="marList"></div>
+            </div>
+            <div id="aprContainer">
+                <div class="apr"></div>
+                <div id="aprList"></div>
+            </div>
+            <div id="mayContainer">
+                <div class="may"></div>
+                <div id="mayList"></div>
+            </div>
+            <div id="junContainer">
+                <div class="jun"></div>
+                <div id="junList"></div>
+            </div>
+            <div id="julContainer">
+                <div class="jul"></div>
+                <div id="julList"></div>
+            </div>
+            <div id="augContainer">
+                <div class="aug"></div>
+                <div id="augList"></div>
+            </div>
+            <div id="sepContainer">
+                <div class="sep"></div>
+                <div id="sepList"></div>
+            </div>
+            <div id="octContainer">
+                <div class="oct"></div>
+                <div id="octList"></div>
+            </div>
+            <div id="novContainer">
+                <div class="nov"></div>
+                <div id="novList"></div>
+            </div>
+            <div id="decContainer">
+                <div class="dec"></div>
+                <div id="decList"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="planDetails" tabindex="-1" role="dialog" aria-labelledby="Trip details" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+
+                <div id="modalHeader" class="modal-header">
+                    <h2 id="detailModalTitle" class="modal-title title">My favorite Plan</h2>
+                </div>
+
+                <div id="modalBody" class="modal-body">
+                    <h5 id="detailModalSubtitle" class="modal-subheader">Seattle Plan</h5>
+                    <div class="form-group bmd-form-group start-date-field">
+                        <label for="startDateInput" class="bmd-label-floating calendar">Start Date</label>
+                        <input type="text" class="form-control start-date-input" id="startDateInput">
+                    </div>
+                    <div class="form-group bmd-form-group end-date-field">
+                        <label for="endDateInput" class="bmd-label-floating">End Date</label>
+                        <input type="text" class="form-control end-date-input" id="endDateInput">
+                    </div>
+                    <div class="form-group bmd-form-group budget-field">
+                        <label for="budgetInput" class="bmd-label-static">Budget</label>
+                        <input type="number" min="0" class="form-control budget-input" id="budgetInput" step="100">
+                    </div>
+                    <div class="form-group bmd-form-group">
+                        <label for="descripInput" class="bmd-label-static">Description</label>
+                        <textarea type="text" class="form-control" id="descripInput"></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button id="planCancelButt" type="button" class="btn btn-secondary" data-bs-dismiss="modal">CANCEL</button>
+                    <button id="planDoneButt" type="button" class="btn btn-primary">DONE</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deletePlanDialog" tabindex="-1" role="dialog" aria-labelledby="Delete plan dialog"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Delete this plan</h5>
+        </div>
+        <div class="modal-body">
+        Are you sure you want to delete this trip?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+          <button id="submitDeletePlan" type="button" class="btn btn-primary" data-dismiss="modal">DELETE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="scripts/jquery.min.js"></script>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <!-- <script src="scripts/popper.js"></script> -->
+
+    <!-- <script src="scripts/bootstrap-material-design.js"></script> -->
+    <!-- <script>$("body").bootstrapMaterialDesign();</script> -->
+    <script src="/__/firebase/7.18.0/firebase-app.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-analytics.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-auth.js"></script>
+    <script src="/__/firebase/7.18.0/firebase-firestore.js"></script>
+    <script src="/__/firebase/init.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/bootstrap-popover-x.js"></script>
+    <script src="scripts/leader-line.min.js"></script>
+</body>
+
+</html>

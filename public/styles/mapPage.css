@@ -1,0 +1,218 @@
+body {
+    background: white;
+}
+
+.navbar {
+    background-color: #800000;
+    color: white;
+    position: sticky;
+}
+
+.page-container {
+    margin-top: 20px;
+}
+
+
+/* #mapPortrait {
+    display: none
+} */
+
+.wrapper {
+    display : flex;
+    justify-content: center;
+}
+
+
+/* .map-container {
+    max-width: 70vw;
+} */
+
+#mapLevel {
+    width: 100%;
+}
+
+#newYorkPin {
+    position: relative;
+    left: 89%;
+    bottom: 41%;
+} 
+
+#miamiPin {
+    position: relative;
+    left: 83%;
+    bottom: 9%;
+} 
+
+#laPin {
+    position: relative;
+    left: 7%;
+    bottom: 34%;
+}
+
+#chicagoPin{
+    position: relative;
+    left: 65%;
+    bottom: 46%;
+}
+
+#houstonPin{
+    position: relative;
+    left: 50%;
+    bottom: 24%;
+}
+
+#seattlePin{
+    position: relative;
+    left: 8%;
+    bottom: 68%;
+}
+
+#bostonPin{
+    position: relative;
+    left: 93%;
+    bottom: 60%;
+}
+
+#dcPin {
+    position: relative;
+    left: 84%;
+    bottom: 53%;
+}
+
+#sfPin{
+    position: relative;
+    left: 4%;
+    bottom: 57%;
+}
+
+#phillyPin{
+    position: relative;
+    left: 87%;
+    bottom: 62%;
+}
+
+#phoenixPin{
+    position: relative;
+    left: 18%;
+    bottom: 48%;
+}
+
+#lasVegasPin{
+    position: relative;
+    left: 14.5%;
+    bottom: 57%;
+}
+
+#saltLakeCityPin{
+    position: relative;
+    left:22%;
+    bottom: 69%;
+}
+
+#dallasPin{
+    position: relative;
+    left: 48%;
+    bottom: 52%;
+}
+
+#atlantaPin{
+    position: relative;
+    left: 73%;
+    bottom: 58%;
+}
+
+#denverPin{
+    position: relative;
+    left: 34%;
+    bottom: 75%;
+}
+
+
+#mapContainer {
+    width: 80vw;
+    height: 100vw;
+}
+
+/*New Nav Bar*/
+.navbar{
+    background-color: #800000;
+}
+.nav-item{
+    margin-right: 1.25rem;
+    --bs-nav-link-hover-color: #6c757d;
+}
+.nav-item > a {     
+    padding: 1rem 0.25rem;
+    color: white;
+}
+.nav-item > a > i {
+    margin-right: 0.5rem;       /*space inbetween icon and text for tab*/
+    vertical-align: middle;
+}
+.nav-item > a > span {
+    vertical-align: middle;
+}
+#navTitle{
+    font-weight:500;
+    font-size: 1.5em;
+    margin-right: 2.5rem;
+    color: white;
+}
+.nav-link{
+    cursor: pointer;
+}
+
+
+.modal label {
+    margin-top: 10px;
+}
+
+#routeSelMsg {
+    font-size: 16px;
+}
+
+#btnWrapper {
+    margin-top: 0px;
+}
+
+.map-page-func-btn {
+    background-color: #800000 !important;
+    font-size: 12px;
+    vertical-align: top;
+    margin: 0.5rem;
+}
+
+.city-detail-intro{
+    margin-top: 2%;
+}
+
+@media (min-width: 1400px){
+    #smallScreenMsg {
+        display: none;
+    }
+}
+#smallScreenMsg {
+    margin-top: 10px;
+    font-size: 15px;
+    text-align: center;
+    transform: translateY(-1000);
+}
+
+@media (min-width: 700px) {
+
+    #routeSelMsg {
+        font-size: 20px;
+    }
+
+    .map-page-func-btn {
+        margin-top: 5px;
+        font-size: 12px;
+    }
+    
+}
+
+@media (min-width: 600px) {
+    #smallScreenMsg {
+        display: none;
+    }
+}
