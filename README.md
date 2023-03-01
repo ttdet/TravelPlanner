@@ -1,2 +1,1 @@
-# courseProject-IntroToWebProgramming
-This is the implementation of a travel planner website, done by me and two other teammates. 
+This is the implementation of a travel planner website. Main service logic is written in JS with Firebase as backend. 
